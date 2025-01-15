@@ -169,3 +169,61 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+# Ignore node_modules directory for frontend
+/frontend/node_modules/
+
+# Ignore frontend build output
+/frontend/build/
+
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Ignore .env files (for sensitive information like API keys)
+.env
+
+# Ignore logs and other runtime files
+*.log
+*.pot
+*.py[cod]
+
+# Ignore Docker files (build context and volumes)
+docker-compose.override.yml
+*.env
+*.swp
+*.swo
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore virtual environments
+venv/
+env/
+.env/
+
+# Ignore any build artifacts from the frontend app
+frontend/build/
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore local testing and coverage reports
+coverage/
+*.coveragerc
+
+# Ignore python wheel files (if any)
+*.whl
+
+# Ignore files related to testing tools (like pytest, etc.)
+nosetests.xml
+*.coveragerc
+
+# Ignore the node_modules for frontend
+frontend/node_modules/
+
+# Ignore Yarn lock if using npm
+frontend/yarn.lock
