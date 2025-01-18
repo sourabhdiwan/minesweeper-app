@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Play the classic Minesweeper game online.">
     <title>Minesweeper</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <div id="game-container"></div>
+    <div id="game-container" role="grid" aria-label="Minesweeper game board"></div>
+    <noscript>
+        <p>JavaScript is required to play this game. Please enable JavaScript in your browser settings.</p>
+    </noscript>
     <script src="{{ url_for('static', filename='js/game.js') }}"></script>
 </body>
 </html>

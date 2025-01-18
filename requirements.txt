@@ -1,3 +1,2 @@
 Flask
-Streamlit
 Flask-SocketIO
