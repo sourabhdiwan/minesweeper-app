@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let grid = [];
     let revealedCells = 0;
     let totalCells = gridSize * gridSize;
+    let isFirstMove = true; // Flag to track the first move
 
     // Initialize game state
     function initializeGrid() {
@@ -72,6 +73,12 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
         container.appendChild(gridElement);
+
+        // Add Reset Button
+        const resetButton = document.createElement('button');
+        resetButton.textContent = "Reset Game";
+        resetButton.addEventListener('click', resetGame);
+        container.appendChild(resetButton);
     }
 
     // Reveal the cell (left-click)
@@ -100,9 +107,14 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
-        // Check win condition
-        if (revealedCells === totalCells - mineCount) {
+        // Check win condition only if it's not the first move
+        if (!isFirstMove && revealedCells === totalCells - mineCount) {
             endGame(true);
+        }
+
+        // Set the first move flag to false after the first cell is revealed
+        if (isFirstMove) {
+            isFirstMove = false;
         }
     }
 
@@ -138,8 +150,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // End the game (win or lose)
     function endGame(isWin) {
+        // Disable all further interactions
         const message = isWin ? "You Win!" : "Game Over!";
-        alert(message);
+        const resultMessage = document.createElement('p');
+        resultMessage.textContent = message;
+        document.getElementById('game-container').appendChild(resultMessage);
+
         // Optionally, reveal all cells
         for (let row = 0; row < gridSize; row++) {
             for (let col = 0; col < gridSize; col++) {
@@ -153,6 +169,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
         }
+    }
+
+    // Reset the game
+    function resetGame() {
+        // Remove the previous result message
+        const resultMessage = document.querySelector('p');
+        if (resultMessage) {
+            resultMessage.remove();
+        }
+
+        // Re-initialize the grid and start a new game
+        initializeGrid();
+        createGridHTML();
     }
 
     // Start a new game
